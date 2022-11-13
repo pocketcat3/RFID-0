@@ -12,13 +12,16 @@ void setup() {
 void loop() {
   if(!mfrc522.PICC_IsNewCardPresent()){
     return;
+    Serial.println();
   }
     if(!mfrc522.PICC_ReadCardSerial()){
       return;
+      Serial.println("");
     }
 //    Serial.println("UID tag:");
    for(byte i=0; i<mfrc522.uid.size;i++){
     Serial.print(mfrc522.uid.uidByte[i],HEX);
     content.concat(String(mfrc522.uid.uidByte[i],HEX));
    }
+  Serial.println("");
 }
